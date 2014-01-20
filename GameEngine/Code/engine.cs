@@ -31,7 +31,7 @@
 //
 // - Known isues -
 //   collison detection for entities is bounding box only, can be inaccurate
-//   there is a conflict when using sprites and drawing shapes, can mess up shapes
+//   if the 0,0 spot on a given sprite sheet is any color but white, the rectangle or quad shapes won't show right
 //
 
 using System;
