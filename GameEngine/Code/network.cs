@@ -311,7 +311,11 @@ namespace GameEngine
         //sets the port binding
         public void setBoundPort(ushort port)
         {
-            socket.Bind(new IPEndPoint(0, port));
+            try
+            {
+                socket.Bind(new IPEndPoint(0, port));
+            }
+            catch { }
         }
     }
 }
