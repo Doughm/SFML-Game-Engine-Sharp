@@ -1,6 +1,4 @@
-﻿//TCP and UDP network functionally
-
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -39,7 +37,6 @@ namespace GameEngine
         {
             try
             {
-
                 socket.Add(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp));
                 socket[socket.Count - 1].ReceiveBufferSize = bufferSize;
                 socket[socket.Count - 1].SendBufferSize = bufferSize;
@@ -71,7 +68,7 @@ namespace GameEngine
                 return false;
             }
         }
-
+        
         //disconnects from all computers
         public void disconnect()
         {
@@ -81,7 +78,7 @@ namespace GameEngine
             }
             listener.Close();
         }
-
+        
         //sends a message over a TCP stream to all connected users
         public void sendMessage(string message)
         {
@@ -155,7 +152,7 @@ namespace GameEngine
                 }
             }
         }
-
+        
         //sets a socket to blocking
         public void setBlocking(bool block, int connection)
         {
@@ -183,7 +180,7 @@ namespace GameEngine
         {
             return messages.Count;
         }
-
+        
         //returns the number of computers connected to this one
         public int getNumberConnected()
         {
@@ -220,6 +217,7 @@ namespace GameEngine
             idNumber = random.Next(10000, 99999);
             socket.Blocking = false;
             buffer = new byte[bufferSize];
+            socket.EnableBroadcast = true;
         }
 
         //sends a message to a specific IP address on a specific port
@@ -229,7 +227,7 @@ namespace GameEngine
             {
                 socket.SendTo(Encoding.UTF8.GetBytes(idNumber.ToString() + message), new IPEndPoint(IPAddress.Parse(address), port));
             }
-            catch { }
+            catch{}
         }
 
         //broadcasts message on a specific port over a local connection
@@ -237,9 +235,9 @@ namespace GameEngine
         {
             try
             {
-                socket.SendTo(Encoding.UTF8.GetBytes(idNumber.ToString() + message), new IPEndPoint(IPAddress.Parse("255.255.255.255"), port));
+                socket.SendTo(Encoding.UTF8.GetBytes(idNumber.ToString() + message), new IPEndPoint(IPAddress.Broadcast, port));
             }
-            catch { }
+            catch{}
         }
 
         //receives a message from anywhere any port
@@ -256,6 +254,7 @@ namespace GameEngine
                     tempStr = string.Empty;
                     Array.Clear(buffer, 0, buffer.Length);
                     socket.Receive(buffer);
+
                     convertedStr = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Trim('\0');
                     for (int i = 0; i < 5; i++)
                     {
@@ -263,15 +262,14 @@ namespace GameEngine
                     }
                     tempIdentifier = Convert.ToInt32(tempStr);
                     tempStr = string.Empty;
-                    for (int i = 5; i < convertedStr.Length; i++)
+                    for(int i = 5; i < convertedStr.Length; i++)
                     {
                         tempStr += convertedStr[i];
                     }
                     messages.Add(new KeyValuePair<int, string>(tempIdentifier, tempStr));
-
                 }
             }
-            catch { }
+            catch{}
         }
 
         //returns a message from the message que
@@ -289,7 +287,7 @@ namespace GameEngine
         //returns the number of messages in que
         public int getNumberOfMessages()
         {
-            return messages.Count;
+	        return messages.Count;
         }
 
         //sets if the socket is blocking or not
@@ -301,7 +299,7 @@ namespace GameEngine
         //returns your random identifier
         public int getMyIdentifier()
         {
-            return idNumber;
+	        return idNumber;
         }
 
         //clears the message que
