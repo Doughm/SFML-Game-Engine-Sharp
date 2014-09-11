@@ -251,22 +251,24 @@ namespace GameEngine
                     {
                         break;
                     }
-                    tempStr = string.Empty;
                     Array.Clear(buffer, 0, buffer.Length);
                     socket.Receive(buffer);
-
+                    tempStr = string.Empty;
                     convertedStr = Encoding.UTF8.GetString(buffer, 0, buffer.Length).Trim('\0');
                     for (int i = 0; i < 5; i++)
                     {
                         tempStr += convertedStr[i];
                     }
                     tempIdentifier = Convert.ToInt32(tempStr);
-                    tempStr = string.Empty;
-                    for(int i = 5; i < convertedStr.Length; i++)
+                    if (idNumber != tempIdentifier)
                     {
-                        tempStr += convertedStr[i];
+                        tempStr = string.Empty;
+                        for(int i = 5; i < convertedStr.Length; i++)
+                        {
+                            tempStr += convertedStr[i];
+                        }
+                        messages.Add(new KeyValuePair<int, string>(tempIdentifier, tempStr));
                     }
-                    messages.Add(new KeyValuePair<int, string>(tempIdentifier, tempStr));
                 }
             }
             catch{}
