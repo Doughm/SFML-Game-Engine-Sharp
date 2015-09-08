@@ -11,6 +11,18 @@ namespace GameEngine
         Dictionary<string, Music> musicDictionary = new Dictionary<string, Music>();
         bool soundOn = true;
 
+        //sets sound on or off
+        public void setSoundOn(bool active)
+        {
+            soundOn = active;
+        }
+
+        //returns if the sound is on or off
+        public bool getSoundOn()
+        {
+            return soundOn;
+        }
+
         //turns sound on or off
         public void soundToggle()
         {

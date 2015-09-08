@@ -4,10 +4,12 @@
 // - Version Changes 1.31 -
 //   added network classes for both TCP and UDP
 //   split engine.cs up into smaller organized files to bring it more in line with the C++ version
+//   added setSoundOn in addition to toggle in audio
+//   added get soundOn to return if the sound is on or off
 //
 // - Version Changes 1.3 -
 //   added the text edit class, alowing you to edit a string with the keyboard
-//   changed the string bindings for A-B to make sorting keys easier
+//   changed the string bindings for A-Z keys to make sorting strings easier
 //   fixed right bracket key detection
 //
 // - Version Changes 1.2 -
@@ -50,33 +52,13 @@ using System.Collections.Generic;
 
 namespace GameEngine
 {
-    class Program
+    class main
     {
-        Window window = new Window();
-        Audio audio = new Audio();
-
-        private void assetLoader(string asset)
+        static void Main(string[] args)
         {
-            switch (asset)
-            {
-                //test shapes
-                case "test":
-		            window.setFont("arial.ttf");
-		            window.addSpriteSheet("smiley.png");
-		            window.addSpriteMap("smiley", new Vector2f(0,1), 95, 98);
-		            window.setBackgroundColor(Color.Black);
-		            window.addCircle("circle1", new Vector2f(200, 50), Color.Cyan, 50);
-		            window.addRectangle("rectangle1" , new Vector2f(50,50), 100, 100, Color.Green);
-		            window.addRectangle("rectangle2", new Vector2f(350,50), 100, 100, Color.Green, Color.Blue, Color.Yellow, Color.Magenta);
-		            window.addText("text1", new Vector2f(200,200), Color.Red, 30, "test test test");
-		            window.addSprite("sprite1", "smiley", new Vector2f(50,200));
-                    break;
-            }
-        }
-
-        public void start()
-        {
-            assetLoader("test");
+            Window window = new Window();
+            AssetLoader assetLoader = new AssetLoader(window);
+            assetLoader.loadBaseAssets();
             GameTimer logicTimer = new GameTimer();
             logicTimer.restartWatch();
             float logicSpeed = 1000 / 45;
@@ -90,7 +72,7 @@ namespace GameEngine
                 {
                     keyboard = window.inputKeyboard();
                     window.setText("text1", edit.takeInput(keyboard));
-                    
+
                     //restarts the logic timer 
                     logicTimer.restartWatch();
                 }
@@ -98,15 +80,6 @@ namespace GameEngine
                 //window update
                 window.drawAll();
             }
-        }
-    }
-
-    class main
-    {
-        static void Main(string[] args)
-        {
-            Program game = new Program();
-            game.start();
         }
     }
 }

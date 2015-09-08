@@ -77,8 +77,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\engine.cs" />
+    <Compile Include="Code\assetloader.cs" />
+    <Compile Include="Code\audio.cs" />
+    <Compile Include="Code\loadini.cs" />
     <Compile Include="Code\main.cs" />
+    <Compile Include="Code\network.cs" />
+    <Compile Include="Code\textedit.cs" />
+    <Compile Include="Code\timer.cs" />
+    <Compile Include="Code\window.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
