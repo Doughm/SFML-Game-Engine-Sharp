@@ -1,0 +1,14 @@
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\GameEngine.exe.config
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\csfml-audio-2.dll
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\csfml-graphics-2.dll
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\csfml-window-2.dll
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\libsndfile-1.dll
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\openal32.dll
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\smiley.png
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\arial.ttf
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\engine.ini
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\GameEngine.exe
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\bin\Release\GameEngine.pdb
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\obj\Release\GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\obj\Release\GameEngine.exe
+C:\Users\Doug\Documents\GitHub\SFML-Game-Engine-Sharp\GameEngine\obj\Release\GameEngine.pdb
